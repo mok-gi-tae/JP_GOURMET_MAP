@@ -113,6 +113,10 @@
 - URL: `/api/restaurants/{restaurantId}`
 - Auth Required: No
 
+| Name | Type | Description |
+|---|---|---|
+| restaurantId | Long | 상세 정보를 조회할 맛집 ID |
+
 #### Response 
 ```json
 {
@@ -140,6 +144,10 @@
 - URL: `/api/restaurants/{restaurantId}/reviews`
 - Auth Required: Yes
 
+| Name | Type | Description |
+|---|---|---|
+| restaurantId | Long | 리뷰 작성할 맛집 ID |
+
 #### Header
 
 ```http
@@ -165,6 +173,12 @@ Authorization: Bearer jwt-token-value
 
 #### 4-2. Get Reviews
 
+리뷰를 조회한다.
+
+| Name | Type | Description |
+|---|---|---|
+| restaurantId | Long | 리뷰 조회할 맛집 ID |
+
 - Method: `GET`
 - URL: `/api/restaurants/{restaurantId}/reviews`
 - Auth Required: No
@@ -180,4 +194,66 @@ Authorization: Bearer jwt-token-value
    "createdAt": SYSTIMESTAMP
   }
 ]
+```
+
+#### 4-3. Update Review  
+
+본인이 작성한 리뷰를 수정한다.
+
+- Method: `PUT`
+- URL: `/api/reviews/{reviewId}`
+- Auth Required: Yes
+
+#### Path Variable
+
+| Name | Type | Description |
+|---|---|---|
+| reviewId | Long | 수정할 리뷰 ID |
+
+#### Header
+```http
+Authorization: Bearer jwt-token-value
+```
+
+#### Request Body
+```json
+{
+  "rating": 4,
+  "content": "가격은 괜찮고 혼밥하기 좋았습니다."
+}
+```
+#### Response
+```json
+{
+  "id": 1,
+  "rating": 4,
+  "content": "가격은 괜찮고 혼밥하기 좋았습니다.",
+  "updatedAt": "2026-06-25T15:00:00"
+}
+```
+
+#### 4.4 Delete Review
+
+본인이 작성한 리뷰를 삭제한다.
+
+- Method: `DELETE`
+- URL: `/api/reviews/{reviewId}`
+- Auth Required: Yes
+
+#### Path Variable
+
+| Name | Type | Description |
+|---|---|---|
+| reviewId | Long | 삭제할 리뷰 ID |
+
+#### Header
+```http
+Authorization: Bearer jwt-token-value
+```
+
+#### Response 
+```json
+{
+  "message": "Review deleted successfully."
+}
 ```
