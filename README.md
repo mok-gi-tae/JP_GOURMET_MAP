@@ -44,8 +44,8 @@ Users can:
 ## 🚧 Development Status
 
 - [x] Project Planning
-- [ ] Requirement Analysis
-- [ ] Database Design
+- [x] Requirement Analysis
+- [x] Database Design
 - [ ] Spring Boot
 - [ ] React
 - [ ] AI Recommendation
