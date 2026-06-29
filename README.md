@@ -38,14 +38,3 @@ Users can:
 
 - Spring AI
 - OpenAI API
-
----
-
-## 🚧 Development Status
-
-- [x] Project Planning
-- [x] Requirement Analysis
-- [x] Database Design
-- [ ] Spring Boot
-- [ ] React
-- [ ] AI Recommendation
