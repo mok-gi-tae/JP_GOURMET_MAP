@@ -167,7 +167,7 @@ Authorization: Bearer jwt-token-value
   "id": 1,
   "rating": 4.5,
   "content": "맛있습니다.",
-  "createdAt": SYSTIMESTAMP
+  "createdAt": SYSDATE
 }
 ```
 
@@ -188,7 +188,7 @@ Authorization: Bearer jwt-token-value
 [
   {
    "id": 1,
-   "nickname": "gitae"
+   "nickname": "gitae",
    "rating": 4.5,
    "content": "맛있습니다.",
    "createdAt": SYSTIMESTAMP
