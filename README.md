@@ -33,8 +33,3 @@ Users can:
 
 - OpenStreetMap
 - Leaflet
-
-### AI
-
-- Spring AI
-- OpenAI API
