@@ -8,9 +8,13 @@ import java.util.Optional;
 
 public interface ReviewRepository extends JpaRepository<Review, Long> {
 
-    List<Review> findByRestaurantId(Long restaurant_id);
+    List<Review> findByRestaurantId(Long restaurantId);
 
-    Optional<Review> findByUserIdAndRestaurantId(Long restaurant_id);
+    Optional<Review> findByUserIdAndRestaurantId(
+            Long userId,
+            Long restaurantId);
 
-    boolean existsByUserIdAndRestaurantId(Long restaurant_id);
+    boolean existsByUserIdAndRestaurantId(
+            Long userId,
+            Long restaurantId);
 }
