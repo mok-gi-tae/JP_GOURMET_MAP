@@ -71,6 +71,7 @@ public class ReviewRepositoryTest {
         );
         // 잘 저장되서 존재하는가?
         assertThat(result).isPresent();
+
         assertThat(result.get().getRating()).isEqualByComparingTo("3.0");
 
     }
