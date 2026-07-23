@@ -12,6 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 
 @DataJpaTest
@@ -27,7 +28,7 @@ public class ReviewRepositoryTest {
     private UserRepository userRepository;
 
     @Test
-    void 유저id와_식당id으로_리뷰작성_조회() {
+    void 유저id와_식당id으로_리뷰조회() {
         User user = userRepository.save(
                 new User(
                         "gitae@example.com",
@@ -39,8 +40,8 @@ public class ReviewRepositoryTest {
                 new Region(
                         "Tokyo",
                         "Tokyo",
-                        new BigDecimal(1.1),
-                        new BigDecimal(2.2)
+                        new BigDecimal("1.1000000000"),
+                        new BigDecimal("2.2000000000")
                 )
         );
         Restaurant restaurant = restaurantRepository.save(
@@ -49,9 +50,9 @@ public class ReviewRepositoryTest {
                         "gogoCurry",
                         "curry",
                         "abcdefg",
-                        new BigDecimal(1.1),
-                        new BigDecimal(2.2),
-                        new BigDecimal(3.0),
+                        new BigDecimal("1.1000000000"),
+                        new BigDecimal("2.2000000000"),
+                        new BigDecimal("3.000"),
                         "abc/def",
                         "ghi/jkl"
                 )
@@ -60,7 +61,7 @@ public class ReviewRepositoryTest {
         Review review = new Review(
                 user,
                 restaurant,
-                new BigDecimal(3.0),
+                new BigDecimal("3.000"),
                 "美味い"
         );
         reviewRepository.save(review);
@@ -73,7 +74,109 @@ public class ReviewRepositoryTest {
         assertThat(result).isPresent();
 
         assertThat(result.get().getRating()).isEqualByComparingTo("3.0");
+        assertThat(result.get().getRating()).isNotEqualByComparingTo("2.999999999999");
 
     }
+
+    @Test
+    void 식당id로_리뷰조회() {
+        User user = userRepository.save(
+                new User(
+                        "gitae@example.com",
+                        "1234",
+                        "gita"
+                )
+        );
+        Region region = regionRepository.save(
+                new Region(
+                        "Tokyo",
+                        "Tokyo",
+                        new BigDecimal("1.1000000000"),
+                        new BigDecimal("2.2000000000")
+                )
+        );
+        Restaurant restaurant = restaurantRepository.save(
+                new Restaurant(
+                        region,
+                        "gogoCurry",
+                        "curry",
+                        "abcdefg",
+                        new BigDecimal("1.1000000000"),
+                        new BigDecimal("2.2000000000"),
+                        new BigDecimal("3.000"),
+                        "abc/def",
+                        "ghi/jkl"
+                )
+        );
+
+        Review review = new Review(
+                user,
+                restaurant,
+                new BigDecimal("3.000"),
+                "美味い"
+        );
+        reviewRepository.save(review);
+
+        List<Review> result = reviewRepository.findByRestaurantId(
+                restaurant.getId()
+        );
+
+        assertThat(result).isNotEmpty();
+        assertThat(result).hasSize(1);
+
+        assertThat(result.get(0).getRating()).isEqualByComparingTo("3.0");
+        assertThat(result.get(0).getRating()).isNotEqualByComparingTo("2.999999999999");
+
+    }
+
+    @Test
+    void 식당id와_유저id로_리뷰존재_확인() {
+        User user = userRepository.save(
+                new User(
+                        "gitae@example.com",
+                        "1234",
+                        "gita"
+                )
+        );
+        Region region = regionRepository.save(
+                new Region(
+                        "Tokyo",
+                        "Tokyo",
+                        new BigDecimal("1.1000000000"),
+                        new BigDecimal("2.2000000000")
+                )
+        );
+        Restaurant restaurant = restaurantRepository.save(
+                new Restaurant(
+                        region,
+                        "gogoCurry",
+                        "curry",
+                        "abcdefg",
+                        new BigDecimal("1.1000000000"),
+                        new BigDecimal("2.2000000000"),
+                        new BigDecimal("3.000"),
+                        "abc/def",
+                        "ghi/jkl"
+                )
+        );
+
+        Review review = new Review(
+                user,
+                restaurant,
+                new BigDecimal("3.000"),
+                "美味い"
+        );
+        reviewRepository.save(review);
+
+        boolean result = reviewRepository.existsByUserIdAndRestaurantId(
+                user.getId(),
+                restaurant.getId()
+        );
+
+        assertThat(result).isTrue();
+
+    }
+
+
 
 }

@@ -22,35 +22,58 @@ public class RestaurantRepositoryTest {
 
     @Test
     void 음식점_지역으로_조회하기() {
-        Region region = regionRepository.save(
+        Region tokyo = regionRepository.save(
                 new Region(
                         "Tokyo",
                         "Tokyo",
-                        new BigDecimal(1.1),
-                        new BigDecimal(2.2)
+                        new BigDecimal("1.1000000000"),
+                        new BigDecimal("2.2000000000")
                 )
         );
 
-        Restaurant restaurant = new Restaurant(
-                region,
+        Region osaka = regionRepository.save(
+                new Region(
+                        "Osaka",
+                        "Osaka",
+                        new BigDecimal("2.2000000000"),
+                        new BigDecimal("1.1000000000")
+                )
+        );
+
+        Restaurant tokyoRestaurant = new Restaurant(
+                tokyo,
                 "gogoCurry",
                 "curry",
                 "abcdefg",
-                new BigDecimal(1.1),
-                new BigDecimal(2.2),
-                new BigDecimal(3.0),
+                new BigDecimal("1.1000000000"),
+                new BigDecimal("2.2000000000"),
+                new BigDecimal("3.000"),
                 "abc/def",
                 "ghi/jkl"
         );
-        restaurantRepository.save(restaurant);
+
+        Restaurant osakaRestaurant = new Restaurant(
+                osaka,
+                "gogoCurry",
+                "curry",
+                "abcdefg",
+                new BigDecimal("2.2000000000"),
+                new BigDecimal("1.1000000000"),
+                new BigDecimal("4.000"),
+                "abc/def",
+                "ghi/jkl"
+        );
+        restaurantRepository.save(tokyoRestaurant);
+        restaurantRepository.save(osakaRestaurant);
 
         List<Restaurant> result = restaurantRepository.findByRegionId(
-                region.getId()
+                tokyo.getId()
         );
 
         assertThat(result).isNotEmpty();
-        assertThat(result.get(0).getCategory()).isEqualTo("curry");
-
+        assertThat(result).hasSize(1);
+        assertThat(result.get(0).getRegion().getId()).isEqualTo(tokyo.getId());
+        assertThat(result.get(0).getId()).isEqualTo(tokyoRestaurant.getId());
     }
 
 }

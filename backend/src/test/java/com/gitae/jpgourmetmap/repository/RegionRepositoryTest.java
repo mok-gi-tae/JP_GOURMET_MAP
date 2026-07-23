@@ -21,13 +21,14 @@ public class RegionRepositoryTest {
         Region region = new Region(
                 "Tokyo",
                 "Tokyo",
-                new BigDecimal(1.1),
-                new BigDecimal(2.2)
+                new BigDecimal("1.1000000000"),
+                new BigDecimal("2.2000000000")
         );
         regionRepository.save(region);
 
         Optional<Region> result = regionRepository.findById(region.getId());
 
+        assertThat(result).isPresent();
         assertThat(result.get().getName()).isEqualTo("Tokyo");
 
     }
