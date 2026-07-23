@@ -1,7 +1,6 @@
 package com.gitae.jpgourmetmap.dto.region;
 
 import com.gitae.jpgourmetmap.domain.Region;
-import jakarta.persistence.Column;
 
 import java.math.BigDecimal;
 
