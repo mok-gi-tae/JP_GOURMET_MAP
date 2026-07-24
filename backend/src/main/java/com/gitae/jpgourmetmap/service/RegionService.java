@@ -15,6 +15,7 @@ public class RegionService {
 
     private final RegionRepository regionRepository;
 
+    // regionRepository에 저장된 모든 행 조회 후 List로 return
     public List<RegionResponse> getRegions() {
         return regionRepository.findAll()
                 .stream()
