@@ -1,6 +1,5 @@
 package com.gitae.jpgourmetmap.controller;
 
-import com.gitae.jpgourmetmap.domain.Region;
 import com.gitae.jpgourmetmap.dto.region.RegionResponse;
 import com.gitae.jpgourmetmap.service.RegionService;
 import lombok.RequiredArgsConstructor;
