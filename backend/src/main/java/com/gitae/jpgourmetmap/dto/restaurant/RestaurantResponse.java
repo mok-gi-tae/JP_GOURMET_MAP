@@ -2,7 +2,6 @@ package com.gitae.jpgourmetmap.dto.restaurant;
 
 import com.gitae.jpgourmetmap.domain.Region;
 import com.gitae.jpgourmetmap.domain.Restaurant;
-import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
