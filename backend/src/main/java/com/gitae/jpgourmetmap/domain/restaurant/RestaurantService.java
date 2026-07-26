@@ -1,4 +1,4 @@
-package com.gitae.jpgourmetmap.restaurant;
+package com.gitae.jpgourmetmap.domain.restaurant;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

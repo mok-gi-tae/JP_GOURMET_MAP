@@ -1,7 +1,7 @@
 package com.gitae.jpgourmetmap.repository;
 
-import com.gitae.jpgourmetmap.region.Region;
-import com.gitae.jpgourmetmap.region.RegionRepository;
+import com.gitae.jpgourmetmap.domain.region.Region;
+import com.gitae.jpgourmetmap.domain.region.RegionRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;

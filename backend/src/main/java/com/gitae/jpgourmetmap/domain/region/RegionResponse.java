@@ -1,4 +1,4 @@
-package com.gitae.jpgourmetmap.region;
+package com.gitae.jpgourmetmap.domain.region;
 
 import java.math.BigDecimal;
 

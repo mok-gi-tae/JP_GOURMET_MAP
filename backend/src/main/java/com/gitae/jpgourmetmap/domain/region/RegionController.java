@@ -1,4 +1,4 @@
-package com.gitae.jpgourmetmap.region;
+package com.gitae.jpgourmetmap.domain.region;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

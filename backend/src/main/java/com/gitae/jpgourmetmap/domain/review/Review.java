@@ -1,8 +1,8 @@
-package com.gitae.jpgourmetmap.review;
+package com.gitae.jpgourmetmap.domain.review;
 
-import com.gitae.jpgourmetmap.domain.BaseTimeEntity;
-import com.gitae.jpgourmetmap.restaurant.Restaurant;
-import com.gitae.jpgourmetmap.user.User;
+import com.gitae.jpgourmetmap.config.BaseTimeEntity;
+import com.gitae.jpgourmetmap.domain.restaurant.Restaurant;
+import com.gitae.jpgourmetmap.domain.user.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

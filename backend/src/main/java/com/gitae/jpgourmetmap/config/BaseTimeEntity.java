@@ -1,4 +1,4 @@
-package com.gitae.jpgourmetmap.domain;
+package com.gitae.jpgourmetmap.config;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;

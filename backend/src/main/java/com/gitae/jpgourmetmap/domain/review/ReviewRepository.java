@@ -1,4 +1,4 @@
-package com.gitae.jpgourmetmap.review;
+package com.gitae.jpgourmetmap.domain.review;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
