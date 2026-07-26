@@ -1,6 +1,5 @@
-package com.gitae.jpgourmetmap.repository;
+package com.gitae.jpgourmetmap.restaurant;
 
-import com.gitae.jpgourmetmap.domain.Restaurant;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

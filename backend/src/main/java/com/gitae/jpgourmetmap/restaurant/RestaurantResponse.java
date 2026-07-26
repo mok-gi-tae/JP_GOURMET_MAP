@@ -1,7 +1,4 @@
-package com.gitae.jpgourmetmap.dto.restaurant;
-
-import com.gitae.jpgourmetmap.domain.Region;
-import com.gitae.jpgourmetmap.domain.Restaurant;
+package com.gitae.jpgourmetmap.restaurant;
 
 import java.math.BigDecimal;
 

@@ -1,7 +1,5 @@
-package com.gitae.jpgourmetmap.controller;
+package com.gitae.jpgourmetmap.region;
 
-import com.gitae.jpgourmetmap.dto.region.RegionResponse;
-import com.gitae.jpgourmetmap.service.RegionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

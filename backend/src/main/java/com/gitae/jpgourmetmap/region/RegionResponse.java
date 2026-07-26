@@ -1,6 +1,4 @@
-package com.gitae.jpgourmetmap.dto.region;
-
-import com.gitae.jpgourmetmap.domain.Region;
+package com.gitae.jpgourmetmap.region;
 
 import java.math.BigDecimal;
 

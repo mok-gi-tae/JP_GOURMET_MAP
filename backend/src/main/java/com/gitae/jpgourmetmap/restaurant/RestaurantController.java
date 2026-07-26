@@ -1,8 +1,6 @@
-package com.gitae.jpgourmetmap.controller;
+package com.gitae.jpgourmetmap.restaurant;
 
 
-import com.gitae.jpgourmetmap.dto.restaurant.RestaurantResponse;
-import com.gitae.jpgourmetmap.service.RestaurantService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

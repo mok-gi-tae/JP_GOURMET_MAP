@@ -1,7 +1,5 @@
-package com.gitae.jpgourmetmap.service;
+package com.gitae.jpgourmetmap.region;
 
-import com.gitae.jpgourmetmap.dto.region.RegionResponse;
-import com.gitae.jpgourmetmap.repository.RegionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

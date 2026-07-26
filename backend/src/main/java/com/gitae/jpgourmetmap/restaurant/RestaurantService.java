@@ -1,7 +1,5 @@
-package com.gitae.jpgourmetmap.service;
+package com.gitae.jpgourmetmap.restaurant;
 
-import com.gitae.jpgourmetmap.dto.restaurant.RestaurantResponse;
-import com.gitae.jpgourmetmap.repository.RestaurantRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

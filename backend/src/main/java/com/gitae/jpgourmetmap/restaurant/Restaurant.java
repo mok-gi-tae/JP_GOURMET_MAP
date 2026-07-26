@@ -1,5 +1,7 @@
-package com.gitae.jpgourmetmap.domain;
+package com.gitae.jpgourmetmap.restaurant;
 
+import com.gitae.jpgourmetmap.domain.BaseTimeEntity;
+import com.gitae.jpgourmetmap.region.Region;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

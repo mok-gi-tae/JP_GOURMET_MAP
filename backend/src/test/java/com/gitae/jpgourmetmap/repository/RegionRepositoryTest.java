@@ -1,13 +1,13 @@
 package com.gitae.jpgourmetmap.repository;
 
-import com.gitae.jpgourmetmap.domain.Region;
+import com.gitae.jpgourmetmap.region.Region;
+import com.gitae.jpgourmetmap.region.RegionRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.Optional;
 
 @DataJpaTest

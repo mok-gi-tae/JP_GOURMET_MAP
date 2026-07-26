@@ -1,10 +1,14 @@
 package com.gitae.jpgourmetmap.repository;
 
 
-import com.gitae.jpgourmetmap.domain.Region;
-import com.gitae.jpgourmetmap.domain.Restaurant;
-import com.gitae.jpgourmetmap.domain.Review;
-import com.gitae.jpgourmetmap.domain.User;
+import com.gitae.jpgourmetmap.region.Region;
+import com.gitae.jpgourmetmap.restaurant.Restaurant;
+import com.gitae.jpgourmetmap.review.Review;
+import com.gitae.jpgourmetmap.review.ReviewRepository;
+import com.gitae.jpgourmetmap.user.User;
+import com.gitae.jpgourmetmap.region.RegionRepository;
+import com.gitae.jpgourmetmap.restaurant.RestaurantRepository;
+import com.gitae.jpgourmetmap.user.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;

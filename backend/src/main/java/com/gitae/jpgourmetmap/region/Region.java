@@ -1,5 +1,6 @@
-package com.gitae.jpgourmetmap.domain;
+package com.gitae.jpgourmetmap.region;
 
+import com.gitae.jpgourmetmap.domain.BaseTimeEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
