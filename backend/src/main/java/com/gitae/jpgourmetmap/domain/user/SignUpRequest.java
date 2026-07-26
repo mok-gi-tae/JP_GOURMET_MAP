@@ -1,0 +1,11 @@
+package com.gitae.jpgourmetmap.domain.user;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
+public record SignUpRequest(
+        @NotBlank @Email String email,
+        @NotBlank @Size(min = 4, max = 20) String password,
+        @NotBlank String nickname
+) { }
