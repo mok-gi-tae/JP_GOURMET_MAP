@@ -19,6 +19,7 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
 
     // 회원가입
+    @Transactional
     public UserResponse signUp(SignUpRequest request) {
         // 이메일 중복 체크
         if (userRepository.existsByEmail(request.email())) {
@@ -38,7 +39,6 @@ public class AuthService {
     }
 
     // 로그인
-    @Transactional
     public UserResponse signIn(LoginRequest request) {
         User user = userRepository.findByEmail(request.email())
                 .orElseThrow(() -> new IllegalArgumentException("이메일 또는 비밀번호가 일치하지 않습니다."));
