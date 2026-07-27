@@ -1,4 +1,6 @@
-package com.gitae.jpgourmetmap.domain.user;
+package com.gitae.jpgourmetmap.domain.user.dto;
+
+import com.gitae.jpgourmetmap.domain.user.User;
 
 public record UserResponse(
         Long id,
