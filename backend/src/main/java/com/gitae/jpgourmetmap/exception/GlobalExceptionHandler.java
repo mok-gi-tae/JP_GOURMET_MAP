@@ -17,6 +17,12 @@ public class GlobalExceptionHandler {
         ErrorResponse response = ErrorResponse.of("DUPLICATE_EMAIL", e.getMessage());
         return ResponseEntity.status(409).body(response);
     }
+    // 닉네임 중복 예외처리
+    @ExceptionHandler(DuplicateNicknameException.class)
+    public ResponseEntity<ErrorResponse> handleDuplicateEmail (DuplicateNicknameException e) {
+        ErrorResponse response = ErrorResponse.of("DUPLICATE_NICKNAME", e.getMessage());
+        return ResponseEntity.status(409).body(response);
+    }
     // 로그인 실패 예외처리
     @ExceptionHandler(InvalidCredentialsException.class)
     public ResponseEntity<ErrorResponse> handleInvalidCredentials (InvalidCredentialsException e) {
