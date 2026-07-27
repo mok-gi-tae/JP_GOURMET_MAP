@@ -20,7 +20,7 @@ public class AuthController {
     private AuthService authService;
 
     // 회원가입 페이지
-    @PostMapping("/signUp")
+    @PostMapping("/signup")
     public ResponseEntity<UserResponse> signUp(@Valid @RequestBody SignUpRequest request) {
         UserResponse response = authService.signUp(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
@@ -31,6 +31,6 @@ public class AuthController {
     public ResponseEntity<UserResponse> signIn(@Valid @RequestBody LoginRequest request) {
         UserResponse response = authService.signIn(request);
         return ResponseEntity.ok(response);
-        }
+    }
 
 }
