@@ -47,9 +47,36 @@
 ```json
 {
   "accessToken": "jwt-token-value",
+  "user": {
+    "id": 1,
+    "email": "user@example.com",
+    "nickname": "gitae"
+  }
+}
+```
+### 1-3. Get Me
+
+로그인한 사용자 본인 정보를 조회한다.
+
+- Method: `GET`
+- URL: `/api/auth/me`
+- Auth Required: Yes
+
+#### Header
+
+```http
+Authorization: Bearer jwt-token-value
+```
+
+#### Response
+```json
+{
+  "id": 1,
+  "email": "user@example.com",
   "nickname": "gitae"
 }
 ```
+
 ---
 ## 2. Region API
 
