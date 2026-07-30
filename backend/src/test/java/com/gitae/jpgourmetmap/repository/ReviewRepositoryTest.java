@@ -181,6 +181,77 @@ public class ReviewRepositoryTest {
 
     }
 
+    @Test
+    void 식당id로_리뷰_개수와_평균평점_집계() {
+        Region region = regionRepository.save(
+                new Region(
+                        "Tokyo",
+                        "Tokyo",
+                        new BigDecimal("1.1000000000"),
+                        new BigDecimal("2.2000000000")
+                )
+        );
+        Restaurant restaurant = restaurantRepository.save(
+                new Restaurant(
+                        region,
+                        "gogoCurry",
+                        "curry",
+                        "abcdefg",
+                        new BigDecimal("1.1000000000"),
+                        new BigDecimal("2.2000000000"),
+                        new BigDecimal("3.000"),
+                        "abc/def",
+                        "ghi/jkl"
+                )
+        );
 
+        User user1 = userRepository.save(
+                new User("gitae@example.com", "1234", "gita")
+        );
+        User user2 = userRepository.save(
+                new User("other@example.com", "1234", "other")
+        );
+
+        reviewRepository.save(new Review(user1, restaurant, new BigDecimal("3.0"), "美味い"));
+        reviewRepository.save(new Review(user2, restaurant, new BigDecimal("5.0"), "最高"));
+
+        long count = reviewRepository.countByRestaurantId(restaurant.getId());
+        Optional<BigDecimal> average = reviewRepository.findAverageRatingByRestaurantId(restaurant.getId());
+
+        assertThat(count).isEqualTo(2);
+        assertThat(average).isPresent();
+        assertThat(average.get()).isEqualByComparingTo("4.0");
+    }
+
+    @Test
+    void 리뷰가_없으면_개수는_0이고_평균평점은_빈값() {
+        Region region = regionRepository.save(
+                new Region(
+                        "Tokyo",
+                        "Tokyo",
+                        new BigDecimal("1.1000000000"),
+                        new BigDecimal("2.2000000000")
+                )
+        );
+        Restaurant restaurant = restaurantRepository.save(
+                new Restaurant(
+                        region,
+                        "gogoCurry",
+                        "curry",
+                        "abcdefg",
+                        new BigDecimal("1.1000000000"),
+                        new BigDecimal("2.2000000000"),
+                        new BigDecimal("3.000"),
+                        "abc/def",
+                        "ghi/jkl"
+                )
+        );
+
+        long count = reviewRepository.countByRestaurantId(restaurant.getId());
+        Optional<BigDecimal> average = reviewRepository.findAverageRatingByRestaurantId(restaurant.getId());
+
+        assertThat(count).isEqualTo(0);
+        assertThat(average).isEmpty();
+    }
 
 }
