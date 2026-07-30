@@ -1,6 +1,8 @@
 package com.gitae.jpgourmetmap.domain.user;
 
+import com.gitae.jpgourmetmap.config.jwt.JwtTokenProvider;
 import com.gitae.jpgourmetmap.domain.user.dto.LoginRequest;
+import com.gitae.jpgourmetmap.domain.user.dto.LoginResponse;
 import com.gitae.jpgourmetmap.domain.user.dto.SignUpRequest;
 import com.gitae.jpgourmetmap.domain.user.dto.UserResponse;
 import com.gitae.jpgourmetmap.exception.DuplicateEmailException;
@@ -20,6 +22,7 @@ public class AuthService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtTokenProvider jwtTokenProvider;
 
     // 회원가입
     @Transactional
@@ -42,13 +45,22 @@ public class AuthService {
     }
 
     // 로그인
-    public UserResponse signIn(LoginRequest request) {
+    public LoginResponse signIn(LoginRequest request) {
         User user = userRepository.findByEmail(request.email())
                 .orElseThrow(() -> new InvalidCredentialsException("이메일 또는 비밀번호가 일치하지 않습니다."));
 
         if (!passwordEncoder.matches(request.password(), user.getPassword())) {
             throw new InvalidCredentialsException("이메일 또는 비밀번호가 일치하지 않습니다.");
         }
+
+        String accessToken = jwtTokenProvider.createToken(user.getId());
+        return new LoginResponse(accessToken, UserResponse.from(user));
+    }
+
+    // 내 정보 조회
+    public UserResponse getMe(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new InvalidCredentialsException("존재하지 않는 사용자입니다."));
         return UserResponse.from(user);
     }
 
