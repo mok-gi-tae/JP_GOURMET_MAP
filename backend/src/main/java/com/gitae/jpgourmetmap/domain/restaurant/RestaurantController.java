@@ -3,6 +3,7 @@ package com.gitae.jpgourmetmap.domain.restaurant;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,14 @@ public class    RestaurantController {
             @RequestParam Long regionId
     ) {
         return restaurantService.getRestaurantsByRegion(regionId);
+    }
+
+    // 맛집 상세 조회
+    @GetMapping("/{restaurantId}")
+    public RestaurantDetailResponse getRestaurantDetail(
+            @PathVariable Long restaurantId
+    ) {
+        return restaurantService.getRestaurantDetail(restaurantId);
     }
 
 }
