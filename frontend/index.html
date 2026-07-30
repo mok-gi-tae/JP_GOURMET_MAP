@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JP Gourmet Map</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="app-header">
+    <h1>🇯🇵 JP Gourmet Map</h1>
+    <div id="auth-area">
+        <div id="guest-area">
+            <button id="login-btn" class="btn btn-outline">로그인</button>
+            <button id="signup-btn" class="btn btn-primary">회원가입</button>
+        </div>
+        <div id="user-area" class="hidden">
+            <span id="user-nickname" class="user-nickname"></span>
+            <button id="logout-btn" class="btn btn-outline">로그아웃</button>
+        </div>
+    </div>
+</header>
+
+<main class="app-main">
+    <div id="map"></div>
+
+    <aside id="restaurant-list-panel" class="side-panel hidden">
+        <div class="panel-header">
+            <h2 id="region-name"></h2>
+            <button class="icon-btn" id="close-list-panel" aria-label="닫기">✕</button>
+        </div>
+        <ul id="restaurant-list" class="restaurant-list"></ul>
+    </aside>
+</main>
+
+<!-- 맛집 상세 모달 -->
+<div id="restaurant-modal" class="modal hidden">
+    <div class="modal-backdrop" data-close="restaurant-modal"></div>
+    <div class="modal-content">
+        <button class="icon-btn modal-close" data-close="restaurant-modal" aria-label="닫기">✕</button>
+
+        <h2 id="detail-name"></h2>
+        <p id="detail-category" class="badge"></p>
+        <p id="detail-address" class="muted"></p>
+
+        <div class="detail-links">
+            <span>타베로그 <strong id="detail-tabelog-score">-</strong></span>
+            <a id="detail-tabelog-url" href="#" target="_blank" rel="noopener" class="hidden">타베로그 보기 ↗</a>
+            <a id="detail-youtube-url" href="#" target="_blank" rel="noopener" class="hidden">관련 유튜브 ↗</a>
+        </div>
+
+        <p class="detail-rating">
+            평균 평점 <strong id="detail-avg-rating">-</strong>
+            (리뷰 <span id="detail-review-count">0</span>개)
+        </p>
+
+        <section class="reviews-section">
+            <h3>리뷰</h3>
+            <ul id="review-list" class="review-list"></ul>
+
+            <form id="review-form" class="review-form hidden">
+                <label>
+                    평점
+                    <input type="number" id="review-rating" min="0.5" max="5" step="0.5" required />
+                </label>
+                <textarea id="review-content" maxlength="2000" required placeholder="리뷰를 작성해주세요 (최대 2000자)"></textarea>
+                <div class="review-form-actions">
+                    <button type="submit" id="review-submit-btn" class="btn btn-primary">등록</button>
+                    <button type="button" id="review-cancel-btn" class="btn btn-outline hidden">취소</button>
+                </div>
+            </form>
+            <p id="review-login-hint" class="muted hidden">리뷰를 작성하려면 로그인하세요.</p>
+        </section>
+    </div>
+</div>
+
+<!-- 로그인 / 회원가입 모달 -->
+<div id="auth-modal" class="modal hidden">
+    <div class="modal-backdrop" data-close="auth-modal"></div>
+    <div class="modal-content modal-content-narrow">
+        <button class="icon-btn modal-close" data-close="auth-modal" aria-label="닫기">✕</button>
+
+        <div id="login-form-wrap">
+            <h2>로그인</h2>
+            <form id="login-form">
+                <input type="email" id="login-email" placeholder="이메일" autocomplete="username" required />
+                <input type="password" id="login-password" placeholder="비밀번호" autocomplete="current-password" required />
+                <button type="submit" class="btn btn-primary btn-block">로그인</button>
+            </form>
+            <p class="auth-switch">계정이 없으신가요? <a href="#" id="switch-to-signup">회원가입</a></p>
+        </div>
+
+        <div id="signup-form-wrap" class="hidden">
+            <h2>회원가입</h2>
+            <form id="signup-form">
+                <input type="email" id="signup-email" placeholder="이메일" autocomplete="username" required />
+                <input type="password" id="signup-password" placeholder="비밀번호 (8~20자)" autocomplete="new-password" minlength="8" maxlength="20" required />
+                <input type="text" id="signup-nickname" placeholder="닉네임 (최대 50자)" maxlength="50" required />
+                <button type="submit" class="btn btn-primary btn-block">회원가입</button>
+            </form>
+            <p class="auth-switch">이미 계정이 있으신가요? <a href="#" id="switch-to-login">로그인</a></p>
+        </div>
+    </div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
