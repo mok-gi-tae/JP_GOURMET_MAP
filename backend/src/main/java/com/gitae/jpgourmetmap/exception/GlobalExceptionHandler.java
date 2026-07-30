@@ -20,7 +20,7 @@ public class GlobalExceptionHandler {
     }
     // 닉네임 중복 예외처리
     @ExceptionHandler(DuplicateNicknameException.class)
-    public ResponseEntity<ErrorResponse> handleDuplicateEmail (DuplicateNicknameException e) {
+    public ResponseEntity<ErrorResponse> handleDuplicateNickname (DuplicateNicknameException e) {
         ErrorResponse response = ErrorResponse.of("DUPLICATE_NICKNAME", e.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
     }
