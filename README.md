@@ -11,7 +11,6 @@ Users can:
 - Check Tabelog ratings
 - Watch related Korean YouTube videos
 - Write reviews and ratings
-- Receive AI-based restaurant recommendations
 
 ---
 
@@ -19,7 +18,7 @@ Users can:
 
 ### Front-End
 
-- React
+- HTML / CSS / JavaScript
 
 ### Back-End
 

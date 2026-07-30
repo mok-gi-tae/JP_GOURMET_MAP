@@ -15,7 +15,7 @@
 ```json
 {
   "email": "user@example.com",
-  "password": "1234",
+  "password": "password1234",
   "nickname": "gitae"
 }
 ```
@@ -192,9 +192,11 @@ Authorization: Bearer jwt-token-value
 ```json
 {
   "id": 1,
+  "nickname": "gitae",
   "rating": 4.5,
   "content": "맛있습니다.",
-  "createdAt": SYSDATE
+  "createdAt": "2026-06-25T15:00:00",
+  "updatedAt": "2026-06-25T15:00:00"
 }
 ```
 
@@ -218,7 +220,8 @@ Authorization: Bearer jwt-token-value
    "nickname": "gitae",
    "rating": 4.5,
    "content": "맛있습니다.",
-   "createdAt": SYSTIMESTAMP
+   "createdAt": "2026-06-25T15:00:00",
+   "updatedAt": "2026-06-25T15:00:00"
   }
 ]
 ```
@@ -253,8 +256,10 @@ Authorization: Bearer jwt-token-value
 ```json
 {
   "id": 1,
+  "nickname": "gitae",
   "rating": 4,
   "content": "가격은 괜찮고 혼밥하기 좋았습니다.",
+  "createdAt": "2026-06-25T14:00:00",
   "updatedAt": "2026-06-25T15:00:00"
 }
 ```
